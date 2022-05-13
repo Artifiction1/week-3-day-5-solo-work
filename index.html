@@ -1,0 +1,170 @@
+<html>
+
+<head>
+
+    <style>
+        body {background-color: springgreen;}
+        #question {width:35%; height: 150px; margin: 50px; background-color: aliceblue; border: solid;
+        border-radius: 40px/60px; padding: 10px; text-align: center; padding-top: 40px;font-weight: bolder; font-size: 20pt;}
+        .answers {font-weight: bold; font-size: 12pt; background-color:chocolate; width: 55%; height: 250px;position: absolute; left: 790px; top: 50px; border: solid; border-radius: 80px/60px;}
+        .answers div{background-color: white; width: 40%; position: relative; margin-top: 14px; height: 40px; margin-left: 60px; border:solid; border-radius: 20px; text-align: center;}
+        #questionNr {background-color: lightblue; height: 200px; position:absolute; right: 100px; width: 25%; border: solid; border-radius: 30px; top: 70px; text-align:center; font-size: 30pt; font-weight: bolder;}
+        #questionNr div{margin-top: 30px;}
+        #button {margin-left: -60px;}
+        button {margin-left: 20px}
+        #questions {height: 30px;width: 200px; margin-left: 50px;}
+    </style>
+
+</head>
+
+<body>
+    <div id="question"> What is your name? </div>
+    <div class="answers"> <div></div> <div></div> <div></div> <div></div></div>
+    <div id = "questionNr"><div> question</div><div id="nummber"></div></div>
+    <input id="questions" type="text" placeholder="input a number here"><button id="button"> select</button> <button id="nextQ"> question </button>
+    <script>
+        let questionNum = document.querySelector("#button") 
+        let count = 0
+        let MaxQuestions = 0
+
+            questionNum.addEventListener('click',function (){
+            MaxQuestions = document.getElementById("questions").value
+            console.log(MaxQuestions)
+            document.getElementById("nummber").innerText = "1"+"/"+ MaxQuestions
+        },false)
+
+        next = document.getElementById("nextQ")
+        next.addEventListener('click',function(){
+            if(MaxQuestions>count){
+                listAmount = listQ.length - count
+                selected = Math.floor(Math.random() * listAmount)
+                console.log(selected)
+                currentQ = listQ[selected]
+                answers = []
+                answers.push(currentQ.correct_answer)
+                
+                for ( let i = 0; i<currentQ.incorrect_answers.length;i++){
+                    answers.push(currentQ.incorrect_answers[i])
+                }
+                answersAmount = answers.length
+                for (let i = 0; i< answersAmount; i++){
+                    answersSelect = Math.floor(Math.random()*(answersAmount-i))
+                    console.log(answers+" "+answers.length)
+                let answersBlocks = document.querySelectorAll('.answers div')
+                    answersBlocks[i].innerText = answers[answersSelect]
+                    answers.splice(answersSelect,1)
+                }
+                
+                
+                console.log(currentQ)
+                let questionZone = document.getElementById("question")
+                questionZone.innerText = currentQ.question
+                listQ.splice(selected, 1)
+                count++
+            }
+        },false)
+        const listQ = [
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question: "What does CPU stand for?",
+          correct_answer: "Central Processing Unit",
+          incorrect_answers: [
+            "Central Process Unit",
+            "Computer Personal Unit",
+            "Central Processor Unit",
+          ],
+        },
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question:
+            "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
+          correct_answer: "Final",
+          incorrect_answers: ["Static", "Private", "Public"],
+        },
+        {
+          category: "Science: Computers",
+          type: "boolean",
+          difficulty: "easy",
+          question: "The logo for Snapchat is a Bell.",
+          correct_answer: "False",
+          incorrect_answers: ["True"],
+        },
+        {
+          category: "Science: Computers",
+          type: "boolean",
+          difficulty: "easy",
+          question:
+            "Pointers were not used in the original C programming language; they were added later on in C++.",
+          correct_answer: "False",
+          incorrect_answers: ["True"],
+        },
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question:
+            "What is the most preferred image format used for logos in the Wikimedia database?",
+          correct_answer: ".svg",
+          incorrect_answers: [".png", ".jpeg", ".gif"],
+        },
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question: "In web design, what does CSS stand for?",
+          correct_answer: "Cascading Style Sheet",
+          incorrect_answers: [
+            "Counter Strike: Source",
+            "Corrective Style Sheet",
+            "Computer Style Sheet",
+          ],
+        },
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question:
+            "What is the code name for the mobile operating system Android 7.0?",
+          correct_answer: "Nougat",
+          incorrect_answers: [
+            "Ice Cream Sandwich",
+            "Jelly Bean",
+            "Marshmallow",
+          ],
+        },
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question: "On Twitter, what is the character limit for a Tweet?",
+          correct_answer: "140",
+          incorrect_answers: ["120", "160", "100"],
+        },
+        {
+          category: "Science: Computers",
+          type: "boolean",
+          difficulty: "easy",
+          question: "Linux was first created as an alternative to Windows XP.",
+          correct_answer: "False",
+          incorrect_answers: ["True"],
+        },
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question:
+            "Which programming language shares its name with an island in Indonesia?",
+          correct_answer: "Java",
+          incorrect_answers: ["Python", "C", "Jakarta"],
+        },
+      ];
+      console.log(listQ.length)
+      let currentList = listQ
+    </Script>
+</body>
+
+</html>
