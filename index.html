@@ -85,10 +85,13 @@
                 console.log(listQ)
 
             }else{
+                if(correctly>MaxQuestions/2){
+                    pass = true
+                }else{ pass = false}
                 currentList =JSON.parse(JSON.stringify(listQ))
                 count = 0
                 let result = document.getElementById("result")
-                result.innerText = "you answered "+correctly + " out of " + MaxQuestions+ " correctly" 
+                result.innerText = "you answered "+correctly + " out of " + MaxQuestions+ " correctly, you " + pass + "the test."
                 MaxQuestions = 0
                 alert("please input the amount of questions")
                 
