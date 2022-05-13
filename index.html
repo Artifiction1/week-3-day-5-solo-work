@@ -27,7 +27,11 @@
     <div id = "questionNr"><div> question</div><div id="nummber"></div></div>
     <input id="questions" type="text" placeholder="input a number here"><button id="button"> select</button> <button id="nextQ"> question </button>
     <div id="result"></div>
+    
+    
+    
     <script>
+      // variables held
         let questionNum = document.querySelector("#button") 
         let count = 0
         let MaxQuestions = 0
@@ -35,13 +39,16 @@
         let correctly = 0
         let target = ""
         let options = ""
-
+        
+        //getting the number of questions
             questionNum.addEventListener('click',function (){
             MaxQuestions = document.getElementById("questions").value
             correctly = 0
             console.log(MaxQuestions)
         },false)
 
+
+        // choosing and presenting questions till max is reached and shows result when done.
         next = document.getElementById("nextQ")
         next.addEventListener('click',function(){
             check = document.querySelector(".answers")
@@ -97,6 +104,9 @@
                 
             }
         },false)
+        
+
+        // Checks the answer and shows the correct answer
         
         check = document.querySelector(".answers")
         check.addEventListener('click',function (e){
