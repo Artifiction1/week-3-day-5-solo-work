@@ -6,6 +6,8 @@
         body {background-color: springgreen;}
         #question {width:35%; height: 150px; margin: 50px; background-color: aliceblue; border: solid;
         border-radius: 40px/60px; padding: 10px; text-align: center; padding-top: 40px;font-weight: bolder; font-size: 20pt;}
+        #answers .wrong {background-color: red;}
+        #answers .correct {background-color: green;}
         .answers {font-weight: bold; font-size: 12pt; background-color:chocolate; width: 55%; height: 250px;position: absolute; left: 790px; top: 50px; border: solid; border-radius: 80px/60px;}
         .answers div{ position: relative; width: 40%; margin-top: 14px; height: 40px; margin-left: 60px; border-radius: 20px; text-align: center;}
         .answers button{background-color: white; width: 100%; height: 40px; margin-left: 0px; border:solid; border-radius: 20px; text-align: center;}
@@ -14,16 +16,17 @@
         #button {margin-left: -60px;}
         button {margin-left: 20px}
         #questions {height: 30px;width: 200px; margin-left: 50px;}
-        .wrong {background-color: red;}
+        #result {margin-left: 50px;}
     </style>
 
 </head>
 
 <body>
     <div id="question"> What is your name? </div>
-    <div class="answers"> <div><button></button></div> <div><button></button></div> <div><button></button></div> <div><button></button></div></div>
+    <div class="answers"> <div><button></button></div> <div><button></button></div> <div><button></button></div> <div><button class="wrong"></button></div></div>
     <div id = "questionNr"><div> question</div><div id="nummber"></div></div>
     <input id="questions" type="text" placeholder="input a number here"><button id="button"> select</button> <button id="nextQ"> question </button>
+    <div id="result"></div>
     <script>
         let questionNum = document.querySelector("#button") 
         let count = 0
@@ -78,8 +81,13 @@
             }else{
                 currentList =JSON.parse(JSON.stringify(listQ))
                 count = 0
+                let result = document.getElementById("result")
+                result.innerText = "you answered "+correctly + " out of " + MaxQuestions+ " correctly" 
                 MaxQuestions = 0
                 alert("please input the amount of questions")
+                
+                
+
             }
         },false)
         
@@ -96,11 +104,15 @@
                 target = options[i].innerText
             if(target == choice){ 
                 console.log(target)
+                break
         }}
             if(target == correctAnswer){
                 correctly++
-                console.log(correctly)
+                options[i].classList.add("correct")
+            }else{
+                options[i].classList.add("wrong")
             }
+            
 
         },false)
 
