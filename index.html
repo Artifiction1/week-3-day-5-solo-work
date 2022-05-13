@@ -23,7 +23,7 @@
 
 <body>
     <div id="question"> What is your name? </div>
-    <div class="answers"> <div><button></button></div> <div><button></button></div> <div><button></button></div> <div><button></button></div></div>
+    <div id= "addRemoveClass"><div class="answers"> <div><button></button></div> <div><button></button></div> <div><button></button></div> <div><button></button></div></div></div>
     <div id = "questionNr"><div> question</div><div id="nummber"></div></div>
     <input id="questions" type="text" placeholder="input a number here"><button id="button"> select</button> <button id="nextQ"> question </button>
     <div id="result"></div>
@@ -44,6 +44,7 @@
 
         next = document.getElementById("nextQ")
         next.addEventListener('click',function(){
+            check = document.querySelector(".answers")
             options = check.querySelectorAll("button")
             for(let i=0; i<4; i++){
                 options[i].classList.remove("correct")
@@ -120,10 +121,10 @@
                     if(options[i].innerText == correctAnswer){
                         options[i].classList.add("correct")
                     }
+                    
                 }
             }
-            
-
+                    check = null
         },false)
 
         const listQ = [
