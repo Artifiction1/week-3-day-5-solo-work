@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <div id="question"> What is your name? </div>
+    <div id="question"> </div>
     <div id= "addRemoveClass"><div class="answers"> <div><button></button></div> <div><button></button></div> <div><button></button></div> <div><button></button></div></div></div>
     <div id = "questionNr"><div> question</div><div id="nummber"></div></div>
     <input id="questions" type="text" placeholder="input a number here"><button id="button"> select</button> <button id="nextQ"> question </button>
@@ -86,17 +86,15 @@
 
             }else{
                 if(correctly>MaxQuestions/2){
-                    pass = true
-                }else{ pass = false}
+                    pass = "passed"
+                }else{ pass = "failed"}
                 currentList =JSON.parse(JSON.stringify(listQ))
                 count = 0
                 let result = document.getElementById("result")
-                result.innerText = "you answered "+correctly + " out of " + MaxQuestions+ " correctly, you " + pass + "the test."
+                result.innerText = "you answered "+correctly + " out of " + MaxQuestions+ " correctly, you " + pass + " the test"
                 MaxQuestions = 0
                 alert("please input the amount of questions")
                 
-                
-
             }
         },false)
         
@@ -148,7 +146,7 @@
           type: "multiple",
           difficulty: "easy",
           question:
-            "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+            "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
           correct_answer: "Final",
           incorrect_answers: ["Static", "Private", "Public"],
         },
